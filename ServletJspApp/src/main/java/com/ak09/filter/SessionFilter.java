@@ -44,7 +44,7 @@ public class SessionFilter implements Filter {
             chain.doFilter(request, response);
             return;
         }
-        System.out.println(session.getAttribute("email"));
+
         // Check session for logged-in user
         if (session == null || session.getAttribute("email") == null) {
             System.out.println("SessionFilter: Redirecting to index.jsp");
