@@ -13,7 +13,7 @@ public class SQLMethods {
 	private static String passString=config.getProperty("passString");
 	
 	public Connection getConnection() throws ClassNotFoundException {
-		Class.forName("com.mysql.cj.jdbc.Driver");
+		 Class.forName("com.mysql.cj.jdbc.Driver");
 		try{
 			Connection connect = DriverManager.getConnection(url, userName, passString);
 			return connect;

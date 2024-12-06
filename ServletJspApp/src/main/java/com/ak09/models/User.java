@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -25,10 +25,10 @@ public class User {
     @Column(name = "email", nullable = false, length = 40)
     private String email;
     
-    @Column(name = "login_password", nullable = false, length = 15)
+    @Column(name = "login_password", length = 30)
     private String password;
     
-    @Column(name = "role", nullable = false, length = 20)
+    @Column(name = "role", length = 20)
     private String role;
 
 	public int getId() {
@@ -103,5 +103,22 @@ public class User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
-    
+
+	public User(String firstName, String lastName, String email, String password, String role) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.role = role;
+	}
+
+	public User(int id, String firstName, String lastName, String email, String password, String role) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.role = role;
+	}
+	
 }

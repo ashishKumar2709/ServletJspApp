@@ -22,7 +22,6 @@ public class Login extends HttpServlet {
 	        
 	        String userEmail = request.getParameter("emailId");
 	        String password = request.getParameter("password");
-	        System.out.println(userEmail +" "+ password);
 	        SQLMethods sqlConnect = new SQLMethods(); 
 	        String sql = "SELECT * FROM users WHERE email = ? AND login_password = ?";
 	        try (
@@ -38,7 +37,6 @@ public class Login extends HttpServlet {
 	                String email = rs.getString("email");
 	                String role = rs.getString("role");
 	                String name = rs.getString("first_name") +" "+ rs.getString("last_name");
-	                System.out.println("result"+" "+ role );
 	                if (!"admin".equals(role)) {
 	                    request.setAttribute("errorMessage", "User is not admin");
 	                    request.getRequestDispatcher("/").forward(request, response);

@@ -13,8 +13,8 @@ import java.util.List;
 import com.ak09.models.User;
 import com.ak09.service.UserServices;
 
-@WebServlet("/get-user-by-id")
-public class GetUserById extends HttpServlet {
+@WebServlet("/show-user-by-id")
+public class ShowUserDetailsById extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("GetUserById");
