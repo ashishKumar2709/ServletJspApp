@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.stat.Statistics;
 
 import com.ak09.config.Config;
 
@@ -30,6 +31,9 @@ public class HibernateUtil {
 
             // Build the session factory
             sessionFactory = configuration.buildSessionFactory();
+            // Enable statistics globally
+            Statistics stats = sessionFactory.getStatistics();
+            stats.setStatisticsEnabled(true);
         } catch (Throwable ex) {
             throw new ExceptionInInitializerError("SessionFactory creation failed: " + ex);
         }
@@ -37,5 +41,11 @@ public class HibernateUtil {
 
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
+    }
+    public static void logCacheStatistics() {
+        Statistics stats = sessionFactory.getStatistics();
+        System.out.println("Second-level cache hit count: " + stats.getSecondLevelCacheHitCount());
+        System.out.println("Second-level cache miss count: " + stats.getSecondLevelCacheMissCount());
+        System.out.println("Second-level cache put count: " + stats.getSecondLevelCachePutCount());
     }
 }

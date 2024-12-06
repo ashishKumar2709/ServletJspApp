@@ -78,6 +78,7 @@ public class UserDaoImpl implements UserDao {
 			transaction = session.beginTransaction();
 			session.persist(user);
 			transaction.commit();
+			 HibernateUtil.logCacheStatistics();
 			return 1;
 		} catch (Exception e) {
 			if (transaction != null)
@@ -115,6 +116,7 @@ public class UserDaoImpl implements UserDao {
 	            transaction = session.beginTransaction();
 	            user = session.get(User.class, userId); // Fetch user by ID
 	            transaction.commit();
+	            HibernateUtil.logCacheStatistics();
 	        } catch (Exception e) {
 	            if (transaction != null) {
 	                transaction.rollback();
@@ -131,6 +133,7 @@ public class UserDaoImpl implements UserDao {
 			transaction = session.beginTransaction();
 			session.merge(user);
 			transaction.commit();
+			 HibernateUtil.logCacheStatistics();
 			return 1;
 		} catch (Exception e) {
 			if (transaction != null)
@@ -155,6 +158,7 @@ public class UserDaoImpl implements UserDao {
 	            System.out.println("User not found with ID: " + userId);
 	        }
 			transaction.commit();
+			 HibernateUtil.logCacheStatistics();
 			return 1;
 		} catch (Exception e) {
 			if (transaction != null)
